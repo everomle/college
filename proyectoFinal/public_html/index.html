@@ -1,0 +1,71 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div id="DIVprueba" style="display:none">
+           <h1>Prueba</h1> 
+           <form id="pruebaForm">
+                <p>
+                    <label for="nombreForm">Nombre: </label>
+                    <input id="nombreForm" type="text" name="nombreForm">
+                </p>
+                <p>
+                    <label for="descripForm">Descripcion: </label>
+                    <input id="descripForm" type="text" name="descripForm">
+                </p>
+                <p>
+                    <label for="fechaCreacionForm">Fecha Creacion: </label>
+                    <input id="fechaCreacionForm" type="text" name="fechaCreacionForm">
+                </p>
+                <p>
+                    <label for="puntosTotalesForm">Puntos Totales: </label>
+                    <input id="puntosTotalesForm" type="text" name="puntosTotalesForm">
+                </p>
+                <input type="button" value="Enviar!!!" onclick="agregarPrueba(); return false;">
+            </form>
+          </div>
+          <div id="DIVpregunta" style="display:none">
+           <h1>Pregunta</h1> 
+           <form id="preguntaForm" name="preguntaForm">
+                <p>
+                    <label for="textoForm">Digite la pregunta: </label>
+                    <input id="textoForm" type="text" name="textoForm">
+                </p>
+                <p>
+                    <label for="tipoForm">Tipo de pregunta: </label>
+                    <select onchange="desplegarForm(this);" name="preguntaForm">    
+                        <option value="seleccionUnica">Seleccion Unica</option>
+                        <option value="seleccionMultiple">Seleccion Multiple</option>
+                        <option value="respuestaCorta">Respuesta Corta</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="puntosForm">Puntos: </label>
+                    <input id="puntosForm" type="text" name="puntosForm">
+                </p>
+                <p>
+                    <label for="nivelForm">Nivel: </label>
+                    <input id="nivelForm" type="text" name="nivelForm">
+                </p>
+                <input type="button" value="Enviar!!!" onclick="agregarPregunta(); return false;">
+            </form>
+          </div>
+          <div id="DIVrespuesta" style="display:none">
+           <h1>Respuesta</h1> 
+           <form id="respuestaForm">
+                <p>
+                    <label for="textoForm">Digite la pregunta: </label>
+                    <input id="textoForm" type="text" name="textoForm">
+                </p>
+                <input type="button" value="Enviar!!!" onclick="agregarRespuesta(); return false;">
+            </form>
+          </div>
+    </body>
+</html>
