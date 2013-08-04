@@ -1,6 +1,5 @@
 /* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Esta clase representa una prueba
  */
 
 function Prueba (pIdPrueba, pNombre, pDescripcion, pFechaCreacion, pPuntosTotales){
