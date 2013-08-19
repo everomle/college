@@ -7,45 +7,127 @@ and open the template in the editor.
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
-        <div id="DIVprueba" style="display:none">
-           <h1>Prueba</h1> 
-           <form id="pruebaForm">
+        <div id="boxRegister">
+            <div id="candidato">Eres candidato</div>
+            <div id="administrador">Eres Administrador</div>
+        </div>
+        
+        <div id="login" style="display:none;" data-tipo-usuario="">
+             <form id="loginForm">
+                <p>
+                    <label for="idNombreForm">Nombre: </label>
+                    <input id="idNombreForm" type="text" name="idNombreForm">
+                </p>
+                <p>
+                    <label for="passwForm">Password: </label>
+                    <input id="passwForm" type="password" name="passwForm">
+                </p>
+                <p><a id="btnLogin" href="#" >Enviar!!!</a></p>
+             </form>
+        </div>
+        
+        <!--DIV USUARIO INFO-->
+        <div id="DIVusuario" style="display:none">
+           <h1>Informacion</h1> 
+           <form id="usuarioForm">
                 <p>
                     <label for="nombreForm">Nombre: </label>
                     <input id="nombreForm" type="text" name="nombreForm">
                 </p>
                 <p>
+                    <label for="cedulaForm">Cedula: </label>
+                    <input id="cedulaForm" type="text" name="cedulaForm">
+                </p>
+                <p>
+                    <label for="nacimientoForm">Fecha nacimiento: </label>
+                    <input id="nacimientoForm" type="text" name="nacimientoForm">
+                </p>
+                <p>
+                    <label for="nivelAcadForm">Nivel academico: </label>
+                    <input id="nivelAcadForm" type="text" name="nivelAcadForm">
+                </p>
+                <p>
+                    <label for="descripcionForm">Descripcion: </label>
+                    <input id="descripcionForm" type="text" name="descripcionForm">
+                </p>
+                
+                <input type="button" value="Enviar!!!" onclick="agregarUsuario(); return false;">
+            </form>
+          </div>
+        
+        
+        
+        
+        
+        <!--DIV PLANTILLAPRUEBA-->
+        <div id="DIVprueba" style="display:none">
+           <h1>Prueba</h1> 
+           <form id="pruebaForm">
+                <p>
+                    <label for="pruebaNombreForm">Nombre: </label>
+                    <input id="pruebaNombreForm" type="text" name="pruebaNombreForm" size="60">
+                </p>
+                <p>
                     <label for="descripForm">Descripcion: </label>
-                    <input id="descripForm" type="text" name="descripForm">
+                    <input id="descripForm" type="text" name="descripForm" size="120">
                 </p>
                 <p>
                     <label for="fechaCreacionForm">Fecha Creacion: </label>
-                    <input id="fechaCreacionForm" type="text" name="fechaCreacionForm">
+                    <input id="fechaCreacionForm" type="text" name="fechaCreacionForm" size="10">
                 </p>
                 <p>
                     <label for="puntosTotalesForm">Puntos Totales: </label>
-                    <input id="puntosTotalesForm" type="text" name="puntosTotalesForm">
+                    <input id="puntosTotalesForm" type="text" name="puntosTotalesForm" size="6">
                 </p>
-                <input type="button" value="Enviar!!!" onclick="agregarPrueba(); return false;">
+                <p><a id="salvarPrueba" href="#" >Salvar la Prueba</a></p>
             </form>
           </div>
+        
+        
+        
+        
+         <!--DIV PREGUNTA-->
           <div id="DIVpregunta" style="display:none">
            <h1>Pregunta</h1> 
            <form id="preguntaForm" name="preguntaForm">
                 <p>
-                    <label for="textoForm">Digite la pregunta: </label>
-                    <input id="textoForm" type="text" name="textoForm">
+                    <label for="textoPregForm">Digite la pregunta: </label>
+                    <input id="textoPregForm" type="text" name="textoPregForm">
                 </p>
                 <p>
-                    <label for="tipoForm">Tipo de pregunta: </label>
-                    <select onchange="desplegarForm(this);" name="preguntaForm">    
+                    <label for="consultaSelect">Tipo de pregunta: </label>
+                    <select id="consultaSelect" name="consultaSelect">    
                         <option value="seleccionUnica">Seleccion Unica</option>
                         <option value="seleccionMultiple">Seleccion Multiple</option>
                         <option value="respuestaCorta">Respuesta Corta</option>
                     </select>
                 </p>
+                <div id="seleccionUnica">
+                    <input id="checkboxUno" type="radio" name="checkbox">
+                    <input id="respCheckUno" type="text" name="respCheckUno" maxlength="40" size="80" >
+                    <input id="checkboxDos" type="radio" name="checkbox">
+                    <input id="respCheckDos" type="text" name="respCheckDos" maxlength="40" size="80" >
+                    <input id="checkboxUno" type="radio" name="checkbox">
+                    <input id="respCheckUno" type="text" name="respCheckUno" maxlength="40" size="80" >
+                    <input id="checkboxDos" type="radio" name="checkbox">
+                    <input id="respCheckDos" type="text" name="respCheckDos" maxlength="40" size="80" >
+                </div>
+                <div id="seleccionMultiple" style="display:none">
+                    <input id="checkboxUno" type="checkbox" name="checkboxUno">
+                    <input id="respCheckUno" type="text" name="respCheckUno" maxlength="40" size="80" >
+                    <input id="checkboxDos" type="checkbox" name="checkboxDos">
+                    <input id="respCheckDos" type="text" name="respCheckDos" maxlength="40" size="80" >
+                    <input id="checkboxUno" type="checkbox" name="checkboxUno">
+                    <input id="respCheckUno" type="text" name="respCheckUno" maxlength="40" size="80" >
+                    <input id="checkboxDos" type="checkbox" name="checkboxDos">
+                    <input id="respCheckDos" type="text" name="respCheckDos" maxlength="40" size="80" >
+                </div>
+                <div id="respuestaCorta" style="display:none">
+                    <input id="textrespuestaCorta" type="text" name="textrespuestaCorta" maxlength="40" size="80" >
+                </div>
                 <p>
                     <label for="puntosForm">Puntos: </label>
                     <input id="puntosForm" type="text" name="puntosForm">
@@ -54,9 +136,14 @@ and open the template in the editor.
                     <label for="nivelForm">Nivel: </label>
                     <input id="nivelForm" type="text" name="nivelForm">
                 </p>
-                <input type="button" value="Enviar!!!" onclick="agregarPregunta(); return false;">
+                <p><a id="salvarPregunta" href="#" >Salvar la Pregunta</a></p>
             </form>
           </div>
+         
+         
+         
+         
+         <!--DIV RESPUESTA-->
           <div id="DIVrespuesta" style="display:none">
            <h1>Respuesta</h1> 
            <form id="respuestaForm">
@@ -68,4 +155,9 @@ and open the template in the editor.
             </form>
           </div>
     </body>
+    
+     <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+     <script type="text/javascript" src="db.js"></script>
+     <script type="text/javascript" src="script.js"></script>
+     <script type="text/javascript" src="app.js"></script>
 </html>

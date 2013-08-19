@@ -1,5 +1,5 @@
 /* 
- * Esta clase representa una prueba
+ * 
  */
 
 function Prueba (pIdPrueba, pNombre, pDescripcion, pFechaCreacion, pPuntosTotales){
@@ -59,28 +59,29 @@ function Prueba (pIdPrueba, pNombre, pDescripcion, pFechaCreacion, pPuntosTotale
     }
 }
 
-
-function Preguntas (pIdPreguntas, pTexto, pTipo ,pPunto, pNivel){
-    var idPreguntas= pIdPreguntas; 
-    var texto= pTexto;
+//Agregar IDprueba y opciones correctas
+function Pregunta (pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel){
+    var idPregunta = pIdPregunta;
+    var textoPreg = pTextoPreg;
     var tipo= pTipo;
     var punto= pPunto; 
+    var nivel= pNivel;
     var misRespuestas = new Array();
     
-    this.getIdPreguntas = function (){
-        return idPreguntas;
+    this.getIdPregunta = function (){
+        return idPregunta;
     }
     
-    this.setIdPreguntas = function (val){
-        idPreguntas = val;
+    this.setIdPregunta = function (val){
+        idPregunta = val;
     }
     
-    this.getTexto = function (){
-        return texto;
+    this.getTextoPreg = function (){
+        return textoPreg;
     }
     
-    this.setTexto = function (val){
-        texto = val;
+    this.setTextoPreg = function (val){
+        textoPreg = val;
     }
     
     this.getTipo = function (){
@@ -117,16 +118,16 @@ function Preguntas (pIdPreguntas, pTexto, pTipo ,pPunto, pNivel){
 }
 
 
-function Respuesta (pIdRespuestas, pTexto ){
-    var idRespuestas= pIdRespuestas; 
+function Respuesta (pIdRespuesta, pTexto ){
+    var idRespuesta = pIdRespuesta; 
     var texto= pTexto;
             
-    this.getIdRespuestas = function (){
-        return idRespuestas;
+    this.getIdRespuesta = function (){
+        return idRespuesta;
     }
     
-    this.setIdRespuestas = function (val){
-        idRespuestas = val;
+    this.setIdRespuesta = function (val){
+        idRespuesta = val;
     }
     
     this.getTexto = function (){
@@ -137,3 +138,119 @@ function Respuesta (pIdRespuestas, pTexto ){
         texto = val;
     }
 }
+
+//Esta es la clase del Candidato
+function Candidato(pCedula,pNombreCompleto,pFechaNacimiento,pNivel,pDescripcion,pIdUsuario){
+        var sCedula=pCedula;
+        var sNombreCompleto=pNombreCompleto;
+        var sFechaNacimiento=pFechaNacimiento;
+        var sNivel=pNivel;
+        var sDescripcion=pDescripcion;
+        var nIdUsuario=pIdUsuario;
+        
+        this.getCedula=function(){
+          return sCedula;
+        }; 
+        this.getNombreCompleto=function(){
+          return sNombreCompleto;
+        };
+        this.getFechaNacimiento=function(){
+          return sFechaNacimiento;
+        };
+        this.getNivel=function(){
+          return sNivel;
+        };  
+        this.getDescripcion=function(){
+          return sDescripcion;
+        };
+        this.getIdUsuario=function(){
+          return sIdUsuario;
+        };   
+        
+        this.toString = function (){
+  			var miUl=document.createElement("ul");
+  			var miLi1=crearLi();
+  		 	miUl.className="candidato";
+  		 	miLi1.appendChild(crearNodeTexto("Nombre : "+sNombreCompleto));
+  			miUl.appendChild(miLi1);
+  			document.getElementById("contReport").appendChild(miUl);
+  		};
+        
+};//cierra la clase Candidato
+
+//Esta es la clase del Usuario
+function Usuario (pIdUsusario, pNombreUsusario, pPassword, pTipo){
+        var sIdUsusario=pIdUsusario;
+        var sNombreUsusario=pNombreUsusario;
+        var sPassword=pPassword;
+        var sTipo=pTipo;
+         
+        this.setIdUsuario=function(val){
+          sIdUsusario = val;
+        }; 
+        this.getIdUsuario=function(){
+          return sIdUsusario;
+        }; 
+        this.getNombreUsusario=function(){
+          return sNombreUsusario;
+        };
+        this.getPassword=function(){
+          return sPassword;
+        };
+        this.getTipo=function(){
+          return sTipo;
+        };     
+};//cierra clase Ususrio
+//Clase de Registro de notas
+function RegistroNota(pCandidato,pIdPrueba,pNota){
+	     var sCandidato=pCandidato;
+     	 var sIdPrueba=pIdPrueba;
+     	 var sNota=pNota;
+     	 
+     	 this.getIdCandidato = function() {
+              return sCandidato;
+  		 };
+  		 this.getIdPrueba = function() {
+              return sIdPrueba;
+  		 }; 
+  		 this.getNota = function() {
+              return sNota;
+  		 };
+  		 
+  		 this.toString = function (){
+  			var miUl=document.createElement("ul");
+  			var miLi1=crearLi();
+  		 	miUl.className="nota";
+  		 	miLi1.appendChild(crearNodeTexto("Nota : "+sNota+"  /  "));
+  			miUl.appendChild(miLi1);
+  			document.getElementById("contReport").appendChild(miUl);
+  		};
+};//cierra clase RegistroNota
+
+//funciones para las clases    
+//Esta función crea y retorna un <li>     
+function crearLi() {
+    
+       var miLiTemp=document.createElement("li");
+       return miLiTemp;
+    
+}; 
+     
+//Esta función crea y retorna un Nodo de Texto
+function crearNodeTexto(pVal) {
+    
+        var miTexTemp=document.createTextNode(pVal);
+        return miTexTemp;
+     
+};   
+      
+//Esta función crea e imprime en contReport del html un titulo con la etiqueta <h1> 
+function crearMiH1(pVal) {
+    
+        var mih1Temp=document.createElement("h1");
+        texth1=document.createTextNode(pVal);
+        mih1Temp.appendChild(texth1);
+        document.getElementById("contReport").appendChild(mih1Temp);
+     
+};  
+      
