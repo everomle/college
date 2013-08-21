@@ -98,10 +98,19 @@ $(document).ready(function() {
         var puntosForm = $("#puntosForm").val();
         var nivelForm = $("#nivelForm").val();
                                     
-        var unaPregunta = new Pregunta (plantillaPruebaContadorId, plantillaPreguntaContadorId++, textoPreg, tipoPregunta, puntosForm, nivelForm);
+        var unaPregunta = new Pregunta (plantillaPruebaContadorId++, plantillaPreguntaContadorId++, textoPreg, tipoPregunta, puntosForm, nivelForm);
         
-        obtenerTipoPregunta();
-        guardarPregunta (Pregunta);
+         if("seleccionUnica" == tipoPreg){
+               
+        }else if("seleccionMultiple" == tipoPreg){
+           switchScreenDiv("#seleccionMultiple", "#seleccionUnica , #respuestaCorta");
+        }else if("respuestaCorta" == tipoPreg){
+          var unaRespuesta = new Respuesta(0, $( "#textrespuestaCorta" ).val ());
+          unaPregunta.addRespuesta(unaRespuesta);
+        }   
+        
+        //guardar la pregunta con su tipo de respuesta en la base de datos
+        guardarPregunta (unaPregunta);
         
     });
 });
