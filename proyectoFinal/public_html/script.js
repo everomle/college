@@ -118,7 +118,7 @@ function Pregunta (pIdPrueba, pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel, pOp
        nivel = val;
     }  
 
-	this.getOpcionCorrecta = function (){
+    this.getOpcionCorrecta = function (){
         return opcionCorrecta;
     }
     

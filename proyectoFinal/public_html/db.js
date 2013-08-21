@@ -55,7 +55,12 @@ function guardarPregunta (pPregunta){
                  pPregunta.getTipo(), pPregunta.getPunto(), pPregunta.getNivel(),
                  pPregunta.getMisRespuestas()[0]]);  /* Aca obtenemos un array, "0" porq es una Unica respuesta, la q trae*/
         }else {
-           switchScreenDiv("#seleccionMultiple", "#seleccionUnica , #respuestaCorta");
+            myDb.executeUpdateWithParams(
+                 "INSERT INTO PlantillaPreguntas (id_prueba, id_pregunta, textoPregunta, tipo, puntos, nivel, resp1, resp2, resp3, resp4, opcCorrect) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                 [pPregunta.getIdPrueba(), pPregunta.getIdPregunta(),pPregunta.getTextoPreg(),
+                 pPregunta.getTipo(), pPregunta.getPunto(), pPregunta.getNivel(),
+                 pPregunta.getMisRespuestas()[0],pPregunta.getMisRespuestas()[1],pPregunta.getMisRespuestas()[2],
+                 pPregunta.getMisRespuestas()[3], pPregunta.getOpcionCorrecta()]);  /* Aca obtenemos un array, "0" porq es una Unica respuesta, la q trae*/
         }
    
 }
