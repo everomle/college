@@ -99,6 +99,19 @@ $(document).ready(function() {
     //Se le nombra un apodo al ID en la base de datos
     myDb.executeQuery("SELECT MAX(id) as idMaxi FROM PlantillaPrueba", [], renombrarID);
 
+  // renombramos el Id de la pregunta para que no inice en0 sino q continue como el sigt en la lista de la BDatos
+	function renombrarID2 (resultado){
+         var length = resultado.rows.length;
+        console.log("Entro a renombrar id, length: " + length);
+        if (length >= 0) {
+
+           plantillaPreguntaContadorId = resultado.rows.item(0)["idMaxi"]+1;
+           console.log("plantillaPreguntaContadorId: " + plantillaPreguntaContadorId);
+        }
+    }
+    
+    //Se le nombra un apodo al ID e la base de datos
+    myDb.executeQuery("SELECT MAX(id) as idMaxi FROM PlantillaPreguntas", [], renombrarID2);  
     
 //Se crea un administrador, si no existe
     function processResults(resultSet) {

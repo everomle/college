@@ -60,13 +60,14 @@ function Prueba (pIdPrueba, pNombre, pDescripcion, pFechaCreacion, pPuntosTotale
 }
 
 //Agregar IDprueba y opciones correctas
-function Pregunta (pIdPrueba, pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel){
+function Pregunta (pIdPrueba, pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel, pOpcionCorrecta){
     var idPrueba   = pIdPrueba;
 	var idPregunta = pIdPregunta;
     var textoPreg = pTextoPreg;
     var tipo= pTipo;
     var punto= pPunto; 
     var nivel= pNivel;
+	var opcionCorrecta = pOpcionCorrecta;
     var misRespuestas = new Array();
     
 	this.getIdPrueba = function (){
@@ -116,10 +117,19 @@ function Pregunta (pIdPrueba, pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel){
     this.setNivel = function (val){
        nivel = val;
     }  
-        
+
+	this.getOpcionCorrecta = function (){
+        return opcionCorrecta;
+    }
+    
+    this.setOpcionCorrecta = function (val){
+       opcionCorrecta = val;
+    }  
+    
     this.getMisRespuestas = function (){
         return misRespuestas;
     }
+	
     
     this.addRespuesta = function (val){
        misRespuestas[misRespuestas.length]= val  ;
