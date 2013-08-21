@@ -1,5 +1,5 @@
 /* 
- * 
+  * Representa una prueba 
  */
 
 function Prueba (pIdPrueba, pNombre, pDescripcion, pFechaCreacion, pPuntosTotales){
@@ -60,14 +60,23 @@ function Prueba (pIdPrueba, pNombre, pDescripcion, pFechaCreacion, pPuntosTotale
 }
 
 //Agregar IDprueba y opciones correctas
-function Pregunta (pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel){
-    var idPregunta = pIdPregunta;
+function Pregunta (pIdPrueba, pIdPregunta,pTextoPreg, pTipo ,pPunto, pNivel){
+    var idPrueba   = pIdPrueba;
+	var idPregunta = pIdPregunta;
     var textoPreg = pTextoPreg;
     var tipo= pTipo;
     var punto= pPunto; 
     var nivel= pNivel;
     var misRespuestas = new Array();
     
+	this.getIdPrueba = function (){
+        return idPrueba;
+    }
+    
+    this.setIdPrueba = function (val){
+        idPrueba = val;
+    }
+	
     this.getIdPregunta = function (){
         return idPregunta;
     }
