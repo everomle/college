@@ -90,6 +90,8 @@ $(document).ready(function() {
     myDb.executeUpdate("CREATE TABLE IF NOT EXISTS PlantillaPrueba (id int unique, nombre varchar(60), descripcion varchar(120), fecha varchar(10), puntos varchar(6))");
     myDb.executeUpdate("CREATE TABLE IF NOT EXISTS PlantillaPreguntas (id_prueba int, id_pregunta int unique, pregunta varchar(60), tipo varchar(20),resp1 varchar(50),resp2 varchar(50),resp3 varchar(50),resp4 varchar(50),opcCorrect varchar(10), puntos varchar(10), nivel varchar(6))");
     
+	myDb.executeUpdate("CREATE TABLE IF NOT EXISTS usuarios (usuarioId varchar(60), password varchar(120), nombre varchar(60), cedula varchar(20) unique, fechaNacimiento varchar(20), nivelAcademico varchar(30), descripcion varchar(100))");
+	
                                                                             
   //renombramos el Id de la prueba para que no inicie en 0 sino q continue como el sigte en la lista de la BDatos.
     function renombrarID (resultado){

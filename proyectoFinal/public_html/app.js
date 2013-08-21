@@ -54,7 +54,10 @@ $(document).ready(function() {
             }
 
             verificarLogin(usuario, verSiElUsuarioExiste);
-        }
+        } else {
+		
+			
+		}
         
         return false;
 
