@@ -50,17 +50,18 @@ function guardarPregunta (pPregunta){
          if("respuestaCorta" == pPregunta.getTipo()){
              
              myDb.executeUpdateWithParams(
-                 "INSERT INTO PlantillaPreguntas (id_prueba, id_pregunta, textoPregunta, tipo, puntos, nivel, resp1) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+                 "INSERT INTO PlantillaPreguntas (id_prueba, id_pregunta, pregunta, tipo, puntos, nivel, resp1) VALUES (?, ?, ?, ?, ?, ?, ?)", 
                  [pPregunta.getIdPrueba(), pPregunta.getIdPregunta(),pPregunta.getTextoPreg(),
                  pPregunta.getTipo(), pPregunta.getPunto(), pPregunta.getNivel(),
-                 pPregunta.getMisRespuestas()[0]]);  /* Aca obtenemos un array, "0" porq es una Unica respuesta, la q trae*/
+                 pPregunta.getMisRespuestas()[0].getTexto()]);  /* Aca obtenemos un array, "0" porq es una Unica respuesta, la q trae*/
         }else {
             myDb.executeUpdateWithParams(
-                 "INSERT INTO PlantillaPreguntas (id_prueba, id_pregunta, textoPregunta, tipo, puntos, nivel, resp1, resp2, resp3, resp4, opcCorrect) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                 "INSERT INTO PlantillaPreguntas (id_prueba, id_pregunta, pregunta, tipo, puntos, nivel, resp1, resp2, resp3, resp4, opcCorrect) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
                  [pPregunta.getIdPrueba(), pPregunta.getIdPregunta(),pPregunta.getTextoPreg(),
                  pPregunta.getTipo(), pPregunta.getPunto(), pPregunta.getNivel(),
-                 pPregunta.getMisRespuestas()[0],pPregunta.getMisRespuestas()[1],pPregunta.getMisRespuestas()[2],
-                 pPregunta.getMisRespuestas()[3], pPregunta.getOpcionCorrecta()]);  /* Aca obtenemos un array, "0" porq es una Unica respuesta, la q trae*/
+                 pPregunta.getMisRespuestas()[0].getTexto(),pPregunta.getMisRespuestas()[1].getTexto(),
+				 pPregunta.getMisRespuestas()[2].getTexto(),
+                 pPregunta.getMisRespuestas()[3].getTexto(), pPregunta.getOpcionCorrecta()]);  /* Aca obtenemos un array, "0" porq es una Unica respuesta, la q trae*/
         }
    
 }
@@ -116,7 +117,7 @@ $(document).ready(function() {
     }
     
     //Se le nombra un apodo al ID e la base de datos
-    myDb.executeQuery("SELECT MAX(id) as idMaxi FROM PlantillaPreguntas", [], renombrarID2);  
+    myDb.executeQuery("SELECT MAX(id_pregunta) as idMaxi FROM PlantillaPreguntas", [], renombrarID2);  
     
 //Se crea un administrador, si no existe
     function processResults(resultSet) {
