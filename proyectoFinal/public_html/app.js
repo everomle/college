@@ -4,6 +4,7 @@
  */
 
 var usuario = null;
+var candidato = null;
 
 //funcion que oculta div
 function switchScreenDiv(pDivIdMostrar, pDivIdOculta) {
@@ -52,12 +53,31 @@ $(document).ready(function() {
                     switchScreenDiv("#DIVprueba", "#login");
                 }
             }
-
+            
             verificarLogin(usuario, verSiElUsuarioExiste);
-        } else {
-		
+            
+        } else  if (tipoUsuario == "candidato"){                       		
+            
+            usuario = new Usuario("", username, password, tipoUsuario); 
+            //Se crea un candidato, si no existe
+            function verSiElUsuarioExiste(resultSet) {
+
+                var length = resultSet.rows.length;
+                console.log("entro ver si existe usrio");
+                if (length == 0) {
+
+                    alert("Lo siento el usuario o password no es correcto");
+                } else {
+                              
+                    usuario.setIdUsuario(resultSet.rows.item(0)["id"]);    
+                    
+                    switchScreenDiv("#DIVcandidato", "#login");
+                }
+            }
+            
+            verificarLoginCandidato(usuario, verSiElUsuarioExiste);
 			
-		}
+	}
         
         return false;
 

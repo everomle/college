@@ -65,10 +65,18 @@ function guardarPregunta (pPregunta){
         }
    
 }
-
+//Verificar dentro de la tabla si el usuario existe segun su tipo,
+//linea 70: tipo "administrador"  y en la linea 77: tipo "candidato"
 function verificarLogin(pUsuario, pFunctionVerSiElUsuarioExiste) {
 
     myDb.executeQuery("SELECT * FROM administrador where usuarioId = ? and password = ? ",
+            [pUsuario.getNombreUsusario(), pUsuario.getPassword()], pFunctionVerSiElUsuarioExiste);
+
+}
+
+function verificarLoginCandidato(pUsuario, pFunctionVerSiElUsuarioExiste) {
+
+    myDb.executeQuery("SELECT * FROM usuarios where usuarioId = ? and password = ? ",
             [pUsuario.getNombreUsusario(), pUsuario.getPassword()], pFunctionVerSiElUsuarioExiste);
 
 }
@@ -85,12 +93,13 @@ $(document).ready(function() {
 
     console.info("Creando la DB");
     myDb = new DB("miBaseDeDatos");
-
+    
+    //Se crean las tablas en la base de datos
     myDb.executeUpdate("CREATE TABLE IF NOT EXISTS administrador (id int unique, usuarioId varchar(60), password varchar(120))");
     myDb.executeUpdate("CREATE TABLE IF NOT EXISTS PlantillaPrueba (id int unique, nombre varchar(60), descripcion varchar(120), fecha varchar(10), puntos varchar(6))");
     myDb.executeUpdate("CREATE TABLE IF NOT EXISTS PlantillaPreguntas (id_prueba int, id_pregunta int unique, pregunta varchar(60), tipo varchar(20),resp1 varchar(50),resp2 varchar(50),resp3 varchar(50),resp4 varchar(50),opcCorrect varchar(10), puntos varchar(10), nivel varchar(6))");
-    
-	myDb.executeUpdate("CREATE TABLE IF NOT EXISTS usuarios (usuarioId varchar(60), password varchar(120), nombre varchar(60), cedula varchar(20) unique, fechaNacimiento varchar(20), nivelAcademico varchar(30), descripcion varchar(100))");
+    //Tabla para "tipo: candidato"
+    myDb.executeUpdate("CREATE TABLE IF NOT EXISTS usuarios (usuarioId varchar(60), password varchar(120), nombre varchar(60), cedula varchar(20) unique, fechaNacimiento varchar(20), nivelAcademico varchar(30), descripcion varchar(100))");
 	
                                                                             
   //renombramos el Id de la prueba para que no inicie en 0 sino q continue como el sigte en la lista de la BDatos.
@@ -133,9 +142,10 @@ $(document).ready(function() {
 
 
 //busqueme en administrador donde usuarioId sea "admin" y le paso a su vez cual funcion lo va hacer: "processResults", para yo pasarla como parametro debe de existir antes por eso esta arriba de esta linea de codigo 
-    myDb.executeQuery("SELECT * FROM administrador where usuarioId = 'admin'", [], processResults);
+    myDb.execut meQuery("SELECT * FROM administrador where usuarioId = 'admin'", [], processResults);
     
-    //myDb.executeQuery("select max(id) as maxId from PlantillaPrueba", [], processResults);
+    myDb.execut meQuery("SELECT * FROM usuarios where usuarioId = 'eve'", [], processResultsCandidato);   
+   
 
 
     console.info("DB Creada");

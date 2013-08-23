@@ -158,45 +158,6 @@ function Respuesta (pIdRespuesta, pTexto ){
     }
 }
 
-//Esta es la clase del Candidato
-function Candidato(pCedula,pNombreCompleto,pFechaNacimiento,pNivel,pDescripcion,pIdUsuario){
-        var sCedula=pCedula;
-        var sNombreCompleto=pNombreCompleto;
-        var sFechaNacimiento=pFechaNacimiento;
-        var sNivel=pNivel;
-        var sDescripcion=pDescripcion;
-        var nIdUsuario=pIdUsuario;
-        
-        this.getCedula=function(){
-          return sCedula;
-        }; 
-        this.getNombreCompleto=function(){
-          return sNombreCompleto;
-        };
-        this.getFechaNacimiento=function(){
-          return sFechaNacimiento;
-        };
-        this.getNivel=function(){
-          return sNivel;
-        };  
-        this.getDescripcion=function(){
-          return sDescripcion;
-        };
-        this.getIdUsuario=function(){
-          return sIdUsuario;
-        };   
-        
-        this.toString = function (){
-  			var miUl=document.createElement("ul");
-  			var miLi1=crearLi();
-  		 	miUl.className="candidato";
-  		 	miLi1.appendChild(crearNodeTexto("Nombre : "+sNombreCompleto));
-  			miUl.appendChild(miLi1);
-  			document.getElementById("contReport").appendChild(miUl);
-  		};
-        
-};//cierra la clase Candidato
-
 //Esta es la clase del Usuario
 function Usuario (pIdUsusario, pNombreUsusario, pPassword, pTipo){
         var sIdUsusario=pIdUsusario;
@@ -220,6 +181,64 @@ function Usuario (pIdUsusario, pNombreUsusario, pPassword, pTipo){
           return sTipo;
         };     
 };//cierra clase Ususrio
+
+//Esta es la clase del Candidato
+function Candidato(pIdUsusario, pNombreUsusario, pPassword, pTipo, pNombreCompleto,
+        pCedula, pFechaNacimiento,pNivel,pDescripcion){
+        Usuario.call(this, pIdUsusario, pNombreUsusario, pPassword, pTipo);
+        
+        var sNombreCompleto=pNombreCompleto;
+        var sCedula=pCedula;
+        var sFechaNacimiento=pFechaNacimiento;
+        var sNivel=pNivel;
+        var sDescripcion=pDescripcion;
+                
+        this.getNombreCompleto=function(){
+          return sNombreCompleto;
+        };
+        this.setNombreCompleto=function(val){
+         sNombreCompleto = val;
+        };
+        this.getCedula=function(){
+          return sCedula;
+        }; 
+        this.getCedula=function(val){
+          sCedula = val;
+        }; 
+        this.getFechaNacimiento=function(){
+          return sFechaNacimiento;
+        };
+        this.setFechaNacimiento=function(val){
+          sFechaNacimiento = val;
+        };
+        this.getNivel=function(){
+          return sNivel;
+        };  
+        this.setNivel=function(val){
+          sNivel = val;
+        };
+        this.getDescripcion=function(){
+          return sDescripcion;
+        };
+        this.setDescripcion=function(val){
+          sDescripcion = val;
+        }; 
+        
+        this.toString = function (){
+  			var miUl=document.createElement("ul");
+  			var miLi1=crearLi();
+  		 	miUl.className="candidato";
+  		 	miLi1.appendChild(crearNodeTexto("Nombre : "+sNombreCompleto));
+  			miUl.appendChild(miLi1);
+  			document.getElementById("contReport").appendChild(miUl);
+  		};
+        
+};
+
+Candidato.prototype = new Usuario()();
+Candidato.prototype.constructor = Candidato();
+//cierra la clase Candidato
+
 //Clase de Registro de notas
 function RegistroNota(pCandidato,pIdPrueba,pNota){
 	     var sCandidato=pCandidato;
