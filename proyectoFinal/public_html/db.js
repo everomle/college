@@ -84,6 +84,21 @@ function verificarLoginCandidato(pUsuario, pFunctionVerSiElUsuarioExiste) {
 
 
 
+
+
+function insertarCandidato(pCandidato) {
+
+	myDb.executeUpdateWithParams(
+                 "INSERT INTO usuarios (usuarioId, password, nombre, cedula, fechaNacimiento, nivelAcademico, descripcion) " +
+				 "VALUES (?, ?, ?, ?, ?, ?, ?)",	 
+                 [pCandidato.getIdUsuario(), pCandidato.getPassword(),pCandidato.getNombreCompleto(),
+                 pCandidato.getCedula(), pCandidato.getFechaNacimiento(), pCandidato.getNivel(),
+                 pCandidato.getDescripcion()]);
+}
+
+
+
+
 /*-------------- Inicia procesos que se ocupan cuando la pagina este cargado --------------------------*/
 /*-----------------------------------------------------------------------------------------------------*/
 
