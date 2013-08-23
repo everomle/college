@@ -4,7 +4,6 @@
  */
 
 var usuario = null;
-var candidato = null;
 
 //funcion que oculta div
 function switchScreenDiv(pDivIdMostrar, pDivIdOculta) {
@@ -13,11 +12,14 @@ function switchScreenDiv(pDivIdMostrar, pDivIdOculta) {
 }
 
 // Handler for .ready() called.
+//------------------------------- Metodos utilizados al "Logearse" ---------------------------------------- //
+//---------------------------------------------------------------------------------------------------------- //
 $(document).ready(function() {
     $("#candidato").click(function() {
         //Guarda cual de los dos div se le dio click: administ o usuario
         var loginDiv = $("#login");
         loginDiv.data("tipoUsuario", "candidato");
+        $("#btnRegistrarse").show();
         switchScreenDiv("#login", "#boxRegister");
 
     });
@@ -25,9 +27,10 @@ $(document).ready(function() {
     $("#administrador").click(function() {
         var loginDiv = $("#login");
         loginDiv.data("tipoUsuario", "administrador");
-
+        $("#btnRegistrarse").hide();
         switchScreenDiv("#login", "#boxRegister");
     });
+    
 
     $("#btnLogin").click(function() {
 
@@ -82,9 +85,34 @@ $(document).ready(function() {
         return false;
 
     });
+    
+   //------------------------------- Metodos utilizados para tipo Candidato -------------------------------- //
+  //---------------------------------------------------------------------------------------------------------- //
+    
+     $("#btnRegistrarse").click(function() {
+        switchScreenDiv("#DIVcandidato", "#login");
+       
+    });
+    
+    $("#agregarCandidato").click(function() {
+        var idNombreForm = $("#idNombreCandidatoForm").val();
+        var passwForm = $("#passwCandidatoForm").val();
+        var nombreCandidatoForm = $("#nombreCandidatoForm").val();
+        var cedulaForm = $("#cedulaForm").val();
+        var nacimientoForm = $("#nacimientoForm").val();
+        var nivelAcadForm = $("#nivelAcadCandidatoForm").val();
+        var descripcionForm = $("#descripcionCandidatoForm").val();
+   
+        var newCandidato = new Candidato(idNombreForm, nombreCandidatoForm, passwForm, "candidato", nombreCandidatoForm, cedulaForm, nacimientoForm, nivelAcadForm, descripcionForm);
+        
+        insertarCandidato(newCandidato);
+    });
+    
+    
 
-
-     //Funcion q guarda la Plantilla de una Prueba
+  //------------------------------- Metodos utilizados para tipo Administrador-------------------------------- //
+  //---------------------------------------------------------------------------------------------------------- //
+ //Funcion q guarda la Plantilla de una Prueba
     $("#salvarPrueba").click(function() {
        
         var nombreForm = $("#pruebaNombreForm").val();

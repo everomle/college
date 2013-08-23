@@ -88,12 +88,19 @@ function verificarLoginCandidato(pUsuario, pFunctionVerSiElUsuarioExiste) {
 
 function insertarCandidato(pCandidato) {
 
+   var p1 = pCandidato.getIdUsuario();
+   var p2 = pCandidato.getPassword();
+   var p3 = pCandidato.getNombreCompleto();
+   var p4 = pCandidato.getCedula();
+   var p5 = pCandidato.getFechaNacimiento();
+   var p6 = pCandidato.getNivel();
+   var p7 = pCandidato.getDescripcion();
+   
+
 	myDb.executeUpdateWithParams(
                  "INSERT INTO usuarios (usuarioId, password, nombre, cedula, fechaNacimiento, nivelAcademico, descripcion) " +
 				 "VALUES (?, ?, ?, ?, ?, ?, ?)",	 
-                 [pCandidato.getIdUsuario(), pCandidato.getPassword(),pCandidato.getNombreCompleto(),
-                 pCandidato.getCedula(), pCandidato.getFechaNacimiento(), pCandidato.getNivel(),
-                 pCandidato.getDescripcion()]);
+                 [p1,p2,p3,p4,p5,p6,p7]);
 }
 
 
@@ -157,9 +164,9 @@ $(document).ready(function() {
 
 
 //busqueme en administrador donde usuarioId sea "admin" y le paso a su vez cual funcion lo va hacer: "processResults", para yo pasarla como parametro debe de existir antes por eso esta arriba de esta linea de codigo 
-    myDb.execut meQuery("SELECT * FROM administrador where usuarioId = 'admin'", [], processResults);
+    myDb.executeQuery("SELECT * FROM administrador where usuarioId = 'admin'", [], processResults);
     
-    myDb.execut meQuery("SELECT * FROM usuarios where usuarioId = 'eve'", [], processResultsCandidato);   
+       
    
 
 

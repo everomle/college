@@ -165,11 +165,11 @@ function Usuario (pIdUsusario, pNombreUsusario, pPassword, pTipo){
         var sPassword=pPassword;
         var sTipo=pTipo;
          
-        this.setIdUsuario=function(val){
-          sIdUsusario = val;
-        }; 
         this.getIdUsuario=function(){
           return sIdUsusario;
+        }; 
+        this.setIdUsuario=function(val){
+          sIdUsusario = val;
         }; 
         this.getNombreUsusario=function(){
           return sNombreUsusario;
@@ -197,19 +197,19 @@ function Candidato(pIdUsusario, pNombreUsusario, pPassword, pTipo, pNombreComple
           return sNombreCompleto;
         };
         this.setNombreCompleto=function(val){
-         sNombreCompleto = val;
+            sNombreCompleto = val;
         };
-        this.getCedula=function(){
-          return sCedula;
+        this.getCedula=function(){ 
+            return sCedula;
         }; 
-        this.getCedula=function(val){
-          sCedula = val;
+        this.setCedula=function(val){
+            sCedula = val;
         }; 
         this.getFechaNacimiento=function(){
-          return sFechaNacimiento;
+            return sFechaNacimiento;
         };
         this.setFechaNacimiento=function(val){
-          sFechaNacimiento = val;
+            sFechaNacimiento = val;
         };
         this.getNivel=function(){
           return sNivel;
@@ -235,8 +235,8 @@ function Candidato(pIdUsusario, pNombreUsusario, pPassword, pTipo, pNombreComple
         
 };
 
-Candidato.prototype = new Usuario()();
-Candidato.prototype.constructor = Candidato();
+Candidato.prototype = new Usuario();
+Candidato.prototype.constructor = Candidato;
 //cierra la clase Candidato
 
 //Clase de Registro de notas

@@ -26,6 +26,7 @@ and open the template in the editor.
                     <input id="passwForm" type="password" name="passwForm">
                 </p>
                 <p><a id="btnLogin" href="#" >Enviar!!!</a></p>
+                <p><a id="btnRegistrarse" href="#" style="display:none">Registrarse</a></p>
              </form>
         </div>
         
@@ -34,8 +35,16 @@ and open the template in the editor.
            <h1>Informacion Candidato</h1> 
            <form id="usuarioForm">
                 <p>
-                    <label for="nombreForm">Nombre: </label>
-                    <input id="nombreForm" type="text" name="nombreForm">
+                    <label for="idNombreCandidatoForm">Username: </label>
+                    <input id="idNombreCandidatoForm" type="text" name="idNombreForm">
+                </p>
+                <p>
+                    <label for="passwCandidatoForm">Password: </label>
+                    <input id="passwCandidatoForm" type="password" name="passwForm">
+                </p>
+                <p>  
+                    <label for="nombreCandidatoForm">Nombre: </label>
+                    <input id="nombreCandidatoForm" type="text" name="nombreForm">
                 </p>
                 <p>
                     <label for="cedulaForm">Cedula: </label>
@@ -46,15 +55,15 @@ and open the template in the editor.
                     <input id="nacimientoForm" type="text" name="nacimientoForm">
                 </p>
                 <p>
-                    <label for="nivelAcadForm">Nivel academico: </label>
-                    <input id="nivelAcadForm" type="text" name="nivelAcadForm">
+                    <label for="nivelAcadCandidatoForm">Nivel academico: </label>
+                    <input id="nivelAcadCandidatoForm" type="text" name="nivelAcadForm">
                 </p>
                 <p>
-                    <label for="descripcionForm">Descripcion: </label>
-                    <input id="descripcionForm" type="text" name="descripcionForm">
+                    <label for="descripcionCandidatoForm">Descripcion: </label>
+                    <input id="descripcionCandidatoForm" type="text" name="descripcionForm">
                 </p>
                 
-                <input type="button" value="Enviar!!!" onclick="agregarUsuario(); return false;">
+                <p><a id="agregarCandidato" href="#" >Agregar Candidato</a></p>
             </form>
           </div>
         
