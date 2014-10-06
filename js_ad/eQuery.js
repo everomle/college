@@ -29,4 +29,4 @@ var $ = function (param) {
 // Note that the dQuery 'toString' method is being called because the 'html' method return
 // the dQuery instance.
 document.getElementById('container').innerHTML = $('<p>').html('<b>Hola</b>').html('gg');
-
+//parte final
